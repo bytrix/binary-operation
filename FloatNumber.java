@@ -1,14 +1,14 @@
 package com.system;
 import com.system.Bin;
 
-class Number {
+public class FloatNumber {
 
-	private int trueValue;
+	private float trueValue;
 	private String mSignAndMagnitude;
 	private String mOnesComplement;
 	private String mTwosComplement;
 
-	Number(int x) {
+	public FloatNumber(float x) {
 		// setSignAndMagnitude(Bin.parseBin(x));
 		mSignAndMagnitude = new String();
 		mOnesComplement = new String();
@@ -23,7 +23,7 @@ class Number {
 		setTwosComplement();
 	}
 
-	public int getTrueValue() {
+	public float getTrueValue() {
 		return trueValue;
 	}
 
@@ -93,16 +93,31 @@ class Number {
 			for(int i=7; i>0; i--) {
 				// System.out.println(i);
 				// switch
-				if (arrTwosComplement[i]+carryBit == 0) {
-					tempBits[i] = 0;
-					carryBit = 0;
-				} else if(arrTwosComplement[i]+carryBit == 1) {
-					tempBits[i] = 1;
-					carryBit = 0;
-				} else if(arrTwosComplement[i]+carryBit == 2) {
-					tempBits[i] = 0;
-					carryBit = 1;
+				switch (arrTwosComplement[i]+carryBit) {
+					case 0:
+						tempBits[i] = 0;
+						carryBit = 0;
+						break;
+					case 1:
+						tempBits[i] = 1;
+						carryBit = 0;
+						break;
+					case 2:
+						tempBits[i] = 0;
+						carryBit = 1;
+						break;
 				}
+
+				// if (arrTwosComplement[i]+carryBit == 0) {
+				// 	tempBits[i] = 0;
+				// 	carryBit = 0;
+				// } else if(arrTwosComplement[i]+carryBit == 1) {
+				// 	tempBits[i] = 1;
+				// 	carryBit = 0;
+				// } else if(arrTwosComplement[i]+carryBit == 2) {
+				// 	tempBits[i] = 0;
+				// 	carryBit = 1;
+				// }
 			}
 
 			mTwosComplement = signBit+"";
