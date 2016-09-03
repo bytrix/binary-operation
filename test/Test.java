@@ -1,5 +1,5 @@
 import com.system.Bin;
-import com.system.Number;
+import com.system.FloatNumber;
 import com.system.Decimal;
 import java.io.*;
 import java.text.DecimalFormat;
@@ -13,7 +13,7 @@ class Test {
 
 		try {
 
-			File file = new File("/home/ynl0zq/Desktop/data");
+			File file = new File("float");
 
 			FileInputStream fis = new FileInputStream(file);
 			InputStreamReader isr = new InputStreamReader(fis);
@@ -24,8 +24,9 @@ class Test {
 			while(null != (line=reader.readLine())) {
 
 				double trueValue = Decimal.parseDecimalF(line);
+				FloatNumber n = new FloatNumber(line, trueValue);
 				// DecimalFormat format = new DecimalFormat("0.0000000");
-				System.out.println(String.format("% 10f", trueValue) + "  " + line);
+				System.out.println(String.format("% 10f", trueValue) + "  " + line + " " + n.getOnesComplement() + " " + n.getTwosComplement());
 				// System.out.println(String.format("% 9d", format.format(trueValue)));
 				// System.out.println(String.format("%09d", 5));
 				// System.out.println(String.format("%020f", trueValue) + " " + line);
@@ -35,11 +36,6 @@ class Test {
 			e.printStackTrace();
 		}
 
-		// double a = 3.14159265359361234657984651657498498465498754654295487165487946;
-		// System.out.println(a);
-		// System.out.println((float)a);
-
-
-		// System.out.println(file);
+		// System.out.println("1234");
 	}
 }
